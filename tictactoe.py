@@ -48,14 +48,17 @@ def display_board():
 def move(player):
     not_taken = True
     while not_taken:
-        choice = int(input('{} move (1-9): '.format(player))) - 1
-        print(board[choice])
-        if board[choice] == ' ':
-            board[choice] = player
-            not_taken = False
-        else:
-            print("Bad move!")
-        display_board()
+        try:
+            choice = int(input('{} move (1-9): '.format(player))) - 1
+            print(board[choice])
+            if board[choice] == ' ':
+                board[choice] = player
+                not_taken = False
+            else:
+                print("Bad move!")
+            display_board()
+        except ValueError:
+            print("Input must be a number (1-9)")
 
 
 def change_players(player):
